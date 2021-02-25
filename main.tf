@@ -5,11 +5,13 @@ terraform {
       version = "3.0.1"
     }
   }
-  # required_version = "~> 0.15"
+  #   required_version = "~> 0.15"
 }
 
-resource "random_pet" "this" {}
+resource "random_pet" "foo" {}
 
 output "foo" {
-  value = random_pet.this.id
+  value = random_pet.foo.id
 }
+
+
