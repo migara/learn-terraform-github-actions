@@ -24,9 +24,14 @@ jobs:
       #   id: fmt
       #   run: terraform fmt -check
 
-      - name: Terraform Workspace
-        id: workspace
+      - name: Terraform Workspace Create
+        id: ws_create
         run: terraform workspace new dev
+        continue-on-error: true
+
+      - name: Terraform Workspace Select
+        id: ws_select
+        run: terraform workspace select dev
         continue-on-error: true
 
       - name: Terraform Init
