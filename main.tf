@@ -8,8 +8,8 @@ terraform {
   required_version = "~> 0.15"
 }
 
-resource "random_pet" "this" {}
+resource "random_pet" "foo" {}
 
 output "foo" {
-  value = random_pet.this.id
+  value = random_pet.foo.id
 }
