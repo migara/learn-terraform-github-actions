@@ -5,7 +5,15 @@ terraform {
       version = "3.0.1"
     }
   }
-  #   required_version = "~> 0.15"
+
+  backend "remote" {
+    organization = "migara"
+
+    workspaces {
+      prefix = "gh-actions-demo"
+    }
+  }
+
 }
 
 resource "random_pet" "foo" {}
