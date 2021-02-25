@@ -5,7 +5,7 @@ terraform {
       version = "3.0.1"
     }
   }
-  required_version = "~> 0.15"
+#   required_version = "~> 0.15"
 }
 
 resource "random_pet" "foo" {}
