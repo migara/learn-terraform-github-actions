@@ -10,7 +10,7 @@ terraform {
     organization = "migara"
 
     workspaces {
-      prefix = "gh-actions-demo"
+      prefix = "gh-actions-demo-"
     }
   }
 
