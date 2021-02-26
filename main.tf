@@ -22,8 +22,4 @@ output "foo" {
   value = random_pet.foo.id
 }
 
-<<<<<<< HEAD
-
-=======
 provider "aws" {}
->>>>>>> 225615b5a0518764ce75d8c55683b68b4064eb96
