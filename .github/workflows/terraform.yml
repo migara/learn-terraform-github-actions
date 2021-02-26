@@ -10,6 +10,11 @@ jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,12 +22,22 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         # with:
-        #   # terraform_version: 0.13.0:
-        #   cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          # terraform_version: 0.13.0:
+          # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Terraform Format
-        id: fmt
-        run: terraform fmt -check
+      # - name: Terraform Format
+      #   id: fmt
+      #   run: terraform fmt -check
+
+      - name: Terraform Workspace Create
+        id: ws_create
+        run: terraform workspace new dev
+        continue-on-error: true
+
+      - name: Terraform Workspace Select
+        id: ws_select
+        run: terraform workspace select dev
+        continue-on-error: true
 
       - name: Terraform Init
         id: init
